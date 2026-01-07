@@ -29,8 +29,6 @@ class AuraAgentSolved:
         
         mlp = MLPClassifier(hidden_layer_sizes=(64, 32), max_iter=500, random_state=RANDOM_SEED)
         mlp.fit(X_train, y_train)
-        
-        y_pred = mlp.predict(X_test)
         print(f"Neural Network accuracy: {accuracy_score(y_test, y_pred):.4f}")
         return mlp
 
@@ -51,7 +49,6 @@ class AuraAgentSolved:
             # Simulated reward: +1 for escalating high-sentiment (frustrated) logs
             reward = 1 if (state > 7 and action == 1) or (state <= 7 and action == 0) else -1
             
-            next_state = np.random.randint(0, 10)
             q_table[state, action] += alpha * (reward + gamma * np.max(q_table[next_state]) - q_table[state, action])
             
         print("RL Q-Table Optimization complete.")
@@ -77,7 +74,6 @@ class AuraAgentSolved:
 
 if __name__ == "__main__":
     df = pd.read_csv("../../data/reference/support_logs_labeled.csv")
-    agent = AuraAgentSolved()
     
     print("Executing Phase 2 & 3 Solve...")
     agent.run_neural_net(df)
