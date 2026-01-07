@@ -19,8 +19,6 @@ def clean_text(text):
     text = text.lower()
     # Remove email addresses
     text = re.sub(r'\S+@\S+', '[EMAIL]', text)
-    # Remove phone numbers (simple pattern)
-    text = re.sub(r'\d{3}-\d{3}-\d{4}', '[PHONE]', text)
     # Strip extra whitespace
     text = re.strip(text)
     return text
@@ -30,10 +28,8 @@ def discover_intents(df, n_clusters=5):
     Task 1.1: Use K-Means to identify clusters of support issues.
     """
     vectorizer = TfidfVectorizer(max_features=1000, stop_words='english')
-    X = vectorizer.fit_transform(df['clean_text'])
     
     kmeans = KMeans(n_clusters=n_clusters, random_state=RANDOM_SEED)
-    labels = kmeans.fit_predict(X)
     
     return labels, X
 
@@ -42,8 +38,6 @@ def plot_clusters(X, labels):
     Task 1.1: Use PCA to visualize clusters in 2D.
     """
     pca = PCA(n_components=2, random_state=RANDOM_SEED)
-    X_2d = pca.fit_transform(X.toarray())
-    
     plt.figure(figsize=(10, 7))
     plt.scatter(X_2d[:, 0], X_2d[:, 1], c=labels, cmap='viridis')
     plt.title("Cluster Discovery (PCA visualization)")
