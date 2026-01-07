@@ -1,0 +1,10 @@
+# Environment
+__pycache__/
+*.pyc
+.env
+venv/
+.DS_Store
+
+# Data (Hidden test sets)
+data/reference/
+cluster_visualization.png
