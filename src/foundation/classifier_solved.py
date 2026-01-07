@@ -18,8 +18,6 @@ def run_supervised_baseline(df):
     X = vectorizer.fit_transform(df['text'])
     y = df['actual_intent']
     
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=RANDOM_SEED)
-    
     clf = RandomForestClassifier(random_state=RANDOM_SEED)
     clf.fit(X_train, y_train)
     
@@ -46,7 +44,6 @@ def run_semi_supervised_learning(df):
     y_lp[random_unlabeled_points] = -1
     
     print(f"Running LabelSpreading with {sum(y_lp != -1)} initial labels...")
-    lp_model = LabelSpreading(kernel='knn', n_neighbors=7)
     lp_model.fit(X, y_lp)
     
     predicted_labels = lp_model.transduction_
@@ -57,7 +54,6 @@ def run_semi_supervised_learning(df):
 
 if __name__ == "__main__":
     # Load the reference labeled data for solution verification
-    df = pd.read_csv("../../data/reference/support_logs_labeled.csv")
     
     print("Step 3: Running Semi-supervised Label Spreading...")
     run_semi_supervised_learning(df)
