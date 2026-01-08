@@ -27,4 +27,7 @@ This is a **sequential** 11-step challenge. Each step builds on the previous one
 - Ensure your code is modular (Foundation, Intelligence, Governance).
 - You are graded on **Logic**, **Understanding**, and **Auditing Depth**.
 
+## Submission
+Fork the project and update the code and share the link to lakshminarasimhan.santhanam@qli.org.in
+
 Good luck!
