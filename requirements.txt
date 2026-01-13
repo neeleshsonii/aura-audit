@@ -10,3 +10,4 @@ fairlearn
 pytest
 langchain-community
 langchain-openai
+regex
