@@ -1,35 +1,38 @@
-# Aura-Audit Intern Evaluation (180 Minutes)
+## Aura-Audit: Customer Support AI
+I built this end-to-end AI system for the Aura-Audit evaluation. It covers everything from raw data cleaning to deploying a responsible ReAct agent. The project is split into three modular phases: Foundation, Intelligence, and Governance.
 
-Welcome to the summer internship evaluation. You are tasked with building a responsible, end-to-end customer support AI system.
+## 🛠️ How it Works
+### 1. Foundation (Data & Baselines)
 
-## Project Flow
-This is a **sequential** 11-step challenge. Each step builds on the previous one.
+   Data Cleaning: Cleaned 1,000 logs and stripped out all PII.
 
-### Phase 1: Foundation (60 min)
-1. **Normalize Data:** Clean 1,000 raw logs in `data/raw/`. Remove PII.
-2. **Unsupervised Discovery:** Use K-Means to identify issue clusters. 
-3. **Semi-supervised Labeling:** Propagate labels from clusters to the full set.
-4. **Supervised Baseline:** Train a Random Forest intent classifier.
+    Labeling: Used K-Means to find issue clusters and propagated those labels to the full set.
 
-### Phase 2: Neural & RL (60 min)
-5. **Neural Network:** Implement an MLP classifier.
-6. **Reinforcement Learning:** Optimize a reward-based decision script (Q-Learning).
-7. **In-processing Audit:** Apply re-weighting to mitigate bias found in training.
+    Baseline: Set up a Random Forest classifier as a starting point.
 
-### Phase 3: Agents & Governance (60 min)
-8. **RAG Pipeline:** Set up a FAISS Vector Store for log retrieval.
-9. **Agentic Loop:** Implement a ReAct Agent that uses the classifier and RAG as tools.
-10. **Post-processing Audit:** Run a final post-processing guardrail and SHAP explainability.
-11. **Compliance:** Complete the Model Card and Impact Assessment.
+### 3. Intelligence (Neural & RL)
 
-## Requirements
-- Use **Random Seed 42** globally.
-- Ensure your code is modular (Foundation, Intelligence, Governance).
-- You are graded on **Logic**, **Understanding**, and **Auditing Depth**.
+   MLP Classifier: Built a neural network for intent classification.
 
-## Submission
-Fork the project and update the code and share the link to lakshminarasimhan.santhanam@qli.org.in
+    RL Optimization: Used Q-Learning to make the decision-making script smarter via rewards.
 
-You should complete ASAP.  Kindly note that Entries will be considered First in First Out.
+    Bias Audit: Applied re-weighting during training to make sure the model stays fair.
 
-Good luck!
+### 4. Governance (Agents & Compliance)
+
+   RAG Pipeline: Set up a FAISS Vector Store so the agent can retrieve actual logs.
+
+    ReAct Agent: Implemented an agent that uses the classifier and RAG as tools to solve tasks.
+
+    Audit & Explainability: Used SHAP to explain model decisions and finalized the Model Card/Impact Assessment.
+
+## 📁 Structure
+foundation.py: Data cleaning and initial ML.
+
+intelligence.py: Neural nets, RL, and bias mitigation.
+
+governance.py: RAG, ReAct agent, and SHAP audits.
+
+Model_Card.md: Compliance and impact details.
+
+## Contact: Neelesh Soni – neeleshsoni54@gmail.com
